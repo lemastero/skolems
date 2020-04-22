@@ -18,6 +18,12 @@ package object skolems {
   type ∀[+F[_]] = Forall[F]
   val ∀ = Forall
 
+  type ∀∀[+P[_,_]] = Forall2[P]
+  val ∀∀ = Forall2
+
   type ∃[+F[_]] = Exists[F]
   val ∃ = Exists
+
+  type ∃∃[+P[_,_]] = Exists2[P]
+  val ∃∃ = Exists2
 }
