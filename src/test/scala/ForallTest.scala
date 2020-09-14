@@ -14,16 +14,9 @@
  * limitations under the License.
  */
 
-package object skolems {
-  type ∀[+F[_]] = Forall[F]
-  val ∀ = Forall
+import skolems.∀
 
-  type ∀∀[+P[_,_]] = Forall2[P]
-  val ∀∀ = Forall2
-
-  type ∃[+F[_]] = Exists[F]
-  val ∃ = Exists
-
-  type ∃∃[+P[_,_]] = Exists2[P]
-  val ∃∃ = Exists2
+class ForallTest {
+  def bippy(s: String, i: Int, f: ∀[λ[α => α => List[α]]]): (List[String], List[Int]) =
+    (f[String](s), f[Int](i))
 }

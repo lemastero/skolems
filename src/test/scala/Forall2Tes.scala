@@ -14,16 +14,22 @@
  * limitations under the License.
  */
 
-package object skolems {
-  type ∀[+F[_]] = Forall[F]
-  val ∀ = Forall
+import skolems.∀∀
 
-  type ∀∀[+P[_,_]] = Forall2[P]
-  val ∀∀ = Forall2
+class Forall2Tes {
+  trait Profunctor[=>:[_, _]] {
+    def dimap[S,T,A,B](sa: S => A, bt: B => T): A =>: B => S =>: T
+  }
 
-  type ∃[+F[_]] = Exists[F]
-  val ∃ = Exists
+  type Optics[P[_, _],S,T,A,B] = P[A,B] => P[S,T]
+  type S = Int
+  type T = Int
+  type A = Int
+  type B = Int
+  type Iso1[P[_,_]] = Profunctor[P] => Optics[P,S,T,A,B]
+  type Iso2[P[_,_]] = ∀∀[Iso1]
 
-  type ∃∃[+P[_,_]] = Exists2[P]
-  val ∃∃ = Exists2
+  //type Iso3[S,T,A,B] = ∀∀[λ[P => Profunctor[P] => Optics[P,S,T,A,B]]]
 }
+
+
